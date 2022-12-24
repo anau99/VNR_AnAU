@@ -1,0 +1,52 @@
+﻿@model List<VNR_AnAU.Models.MonHocViewModel>
+@{
+    ViewData["Title"] = "Khóa Học: " + Model[0].TenKhoaHoc;
+    int mid = (Model.Count - 1) / 2;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .border-right {
+            border-right: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+    <h2 style="font-weight: 700">@ViewData["Title"]</h2>
+    <hr style="height: 5.5px;background-color: greenyellow" />
+    @if(Model.Count==0)
+    {   
+        <a>Hiện tại không có dữ liệu môn học này</a>
+    }
+    else
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 border-right">
+                    @for (int i = 0; i <= mid; i++)
+                    {
+                        var stmonhoc = (i + 1).ToString() + '.' + Model[i].TenMonHoc;
+                        <p>@stmonhoc</p>
+                    }
+
+                </div>
+                <div class="col-md-6">
+                    @for (int i = mid + 1; i < Model.Count; i++)
+                    {
+                        var stmonhoc = (i + 1).ToString() + '.' + Model[i].TenMonHoc;
+                        <p>@stmonhoc</p>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+   
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,18 @@
+﻿@model List<VNR_AnAU.Models.KhoaHocViewModel>
+@{
+    ViewData["Title"] = "Khóa Học";
+}
+<!DOCTYPE html>
+<h2 style="font-weight: 700">@ViewData["Title"]</h2>
+<hr style="height: 5.5px;background-color: greenyellow" />
+<div>
+    @if (Model != null && Model.Any())
+    {
+        @foreach (var c in Model)
+        {
+           var IdAndTenKhoaHoc = c.Id.ToString() + '_' + c.TenKhoaHoc;
+           <li><a asp-area="" asp-controller="MonHoc" asp-action="DanhSachMonHoc" asp-route-id="@IdAndTenKhoaHoc">@c.TenKhoaHoc</a></li>
+        }
+    }
+    else {<p>Không có dữ liệu hiện giờ</p>;}
+</div>
